@@ -69,3 +69,4 @@ test-*.js
 
 # Private/sensitive files
 PRIVACY-CHECK.md
+MEMORY_*.md
