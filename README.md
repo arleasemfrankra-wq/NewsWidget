@@ -302,6 +302,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
+- **[NewsNow](https://github.com/Guyungy/newsnow)**: Inspired by this excellent news aggregation project
 - **News APIs**: Thanks to all the free news API providers
 - **Icons**: SF Symbols by Apple
 - **Inspiration**: macOS native design guidelines
