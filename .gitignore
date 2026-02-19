@@ -1,0 +1,71 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build outputs
+*.app
+NewsWidget
+NewsWidget-Desktop
+NewsWidget-Simple
+NewsWidget-Server
+NewsWidget-Server-Fixed
+NewsWidget-new
+dist/
+build/
+
+# Logs
+*.log
+/tmp/
+
+# Distribution packages
+*.zip
+*.dmg
+*.pkg
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.xccheckout
+*.moved-aside
+
+# Swift
+*.swiftmodule
+*.swiftdoc
+
+# Temporary files
+*~
+*.tmp
+*.bak
+*.swp
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+
+# Test files
+test-*.js
+*-test.js
+
+# Backup files
+*-backup.*
+*.backup
+
+# Crash logs
+~/Library/Logs/DiagnosticReports/
+
+# Private/sensitive files
+PRIVACY-CHECK.md

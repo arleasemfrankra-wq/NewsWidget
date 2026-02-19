@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>NewsNow</title>
+  <link rel="stylesheet" href="style-v6.css">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <span class="logo-icon">📰</span>
+        <span class="logo-text">NewsNow</span>
+      </div>
+      <span class="version">v6.0</span>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" id="refreshBtn" title="刷新">
+        <span class="icon">↻</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 标签页 -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="hot">
+      <span class="tab-icon">🔥</span>
+      <span class="tab-text">最热</span>
+    </button>
+    <button class="tab" data-tab="realtime">
+      <span class="tab-icon">⚡</span>
+      <span class="tab-text">实时</span>
+    </button>
+    <button class="tab" data-tab="tech">
+      <span class="tab-icon">💻</span>
+      <span class="tab-text">科技</span>
+    </button>
+  </nav>
+
+  <!-- 主内容 -->
+  <main class="main" id="mainContent">
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <p>加载中...</p>
+    </div>
+    <div class="content-container" id="contentContainer" style="display: none;"></div>
+  </main>
+
+  <!-- 底部状态栏 -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="update-time" id="updateTime">--:--</span>
+      <span class="separator">·</span>
+      <span class="auto-refresh">
+        <span class="icon">⏱</span>
+        <span id="countdown">10:00</span>
+      </span>
+    </div>
+    <div class="footer-right">
+      <button class="footer-btn" id="topBtn">
+        <span class="icon">↑</span>
+        <span>回顶部</span>
+      </button>
+    </div>
+  </footer>
+
+  <script src="app-v6.js"></script>
+</body>
+</html>

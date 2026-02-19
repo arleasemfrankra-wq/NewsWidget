@@ -1,0 +1,624 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  background: transparent;
+  color: #1d1d1f;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* 头部 - 现代化设计 */
+.header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.12) 0%, 
+    rgba(88, 86, 214, 0.12) 50%,
+    rgba(255, 45, 85, 0.08) 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.5), 
+    transparent);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-icon {
+  font-size: 18px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.update-time {
+  font-size: 11px;
+  color: #86868b;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.update-time::before {
+  content: '🕐';
+  font-size: 10px;
+}
+
+/* 信息栏 - 卡片式设计 */
+.info-bar {
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather, .reminders {
+  font-size: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1d1d1f;
+  line-height: 1.4;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.weather:hover, .reminders:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.weather-icon, .reminder-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.weather-details, .reminder-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.weather-main {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.weather-sub {
+  font-size: 10px;
+  color: #86868b;
+}
+
+.reminder-count {
+  font-weight: 600;
+  color: #007aff;
+}
+
+.reminder-urgent {
+  color: #ff3b30;
+  font-weight: 700;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.loading {
+  color: #86868b;
+  font-size: 11px;
+  font-style: italic;
+}
+
+/* 新闻容器 */
+.news-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  scroll-behavior: smooth;
+}
+
+.news-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.news-container::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+
+.news-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.news-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 加载动画 - 更精致 */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #86868b;
+  gap: 12px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(0, 122, 255, 0.1);
+  border-top-color: #007aff;
+  border-radius: 50%;
+  animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-spinner p {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 新闻分类 - 更现代 */
+.news-category {
+  margin-bottom: 16px;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: -0.3px;
+  padding: 0 4px;
+}
+
+.category-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 122, 255, 0.08);
+  border-radius: 6px;
+}
+
+.category-count {
+  font-size: 10px;
+  color: #86868b;
+  font-weight: 600;
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+/* 新闻项 - 精致卡片 */
+.news-item {
+  padding: 12px 14px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.news-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #007aff, #5856d6);
+  transform: scaleY(0);
+  transition: transform 0.25s ease;
+}
+
+.news-item:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 122, 255, 0.2);
+  transform: translateX(4px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.news-item:hover::before {
+  transform: scaleY(1);
+}
+
+.news-item:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+.news-title {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #1d1d1f;
+  margin-bottom: 6px;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  letter-spacing: -0.2px;
+}
+
+.news-meta {
+  font-size: 10px;
+  color: #86868b;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.news-meta span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.news-source {
+  font-weight: 600;
+  color: #007aff;
+}
+
+.news-time {
+  opacity: 0.8;
+}
+
+/* 底部 - 现代化控制栏 */
+.footer {
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.refresh-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 2px 8px rgba(0, 122, 255, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: -0.2px;
+}
+
+.refresh-btn::before {
+  content: '↻';
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background: linear-gradient(135deg, #0051d5 0%, #4a3fb8 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 12px rgba(0, 122, 255, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.refresh-btn:hover::before {
+  transform: rotate(180deg);
+}
+
+.refresh-btn:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 1px 4px rgba(0, 122, 255, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-btn.loading::before {
+  animation: spin 0.8s linear infinite;
+}
+
+.auto-refresh {
+  font-size: 11px;
+  color: #86868b;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+.auto-refresh::before {
+  content: '⏱';
+  font-size: 12px;
+}
+
+#countdown {
+  color: #007aff;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  min-width: 42px;
+  text-align: center;
+}
+
+/* 空状态 - 更友好 */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #86868b;
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.empty-state p:first-of-type {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+/* 暗色模式支持 - 优化 */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #f5f5f7;
+  }
+  
+  .container {
+    background: rgba(28, 28, 30, 0.92);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .header {
+    background: linear-gradient(135deg, 
+      rgba(0, 122, 255, 0.18) 0%, 
+      rgba(88, 86, 214, 0.18) 50%,
+      rgba(255, 45, 85, 0.12) 100%);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .header::before {
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.15), 
+      transparent);
+  }
+  
+  .title, .category-title, .news-title {
+    color: #f5f5f7;
+  }
+  
+  .update-time {
+    background: rgba(255, 255, 255, 0.08);
+    color: #98989d;
+  }
+  
+  .info-bar, .footer {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .weather, .reminders {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #f5f5f7;
+  }
+  
+  .weather:hover, .reminders:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  
+  .weather-sub, .loading, .category-count, .news-meta, .auto-refresh {
+    color: #98989d;
+  }
+  
+  .category-icon {
+    background: rgba(0, 122, 255, 0.15);
+  }
+  
+  .category-count {
+    background: rgba(255, 255, 255, 0.08);
+  }
+  
+  .news-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .news-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(0, 122, 255, 0.4);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .news-source {
+    color: #0a84ff;
+  }
+  
+  .refresh-btn {
+    background: linear-gradient(135deg, #0a84ff 0%, #5e5ce6 100%);
+    box-shadow: 
+      0 2px 8px rgba(10, 132, 255, 0.4),
+      0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .refresh-btn:hover {
+    background: linear-gradient(135deg, #0066cc 0%, #4a3fb8 100%);
+    box-shadow: 
+      0 4px 12px rgba(10, 132, 255, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .auto-refresh {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  
+  #countdown {
+    color: #0a84ff;
+  }
+  
+  .news-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .news-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .spinner {
+    border-color: rgba(10, 132, 255, 0.15);
+    border-top-color: #0a84ff;
+  }
+  
+  .empty-state p:first-of-type {
+    color: #f5f5f7;
+  }
+}
+
+/* 响应式优化 */
+@media (max-width: 400px) {
+  .header {
+    padding: 12px 16px;
+  }
+  
+  .title {
+    font-size: 14px;
+  }
+  
+  .info-bar {
+    padding: 10px 12px;
+  }
+  
+  .news-container {
+    padding: 10px 12px;
+  }
+  
+  .footer {
+    padding: 10px 12px;
+  }
+}
+
+/* 性能优化 */
+.news-item,
+.weather,
+.reminders,
+.refresh-btn {
+  will-change: transform;
+}
+
+/* 打印样式 */
+@media print {
+  .footer,
+  .header {
+    display: none;
+  }
+  
+  .news-container {
+    overflow: visible;
+  }
+}

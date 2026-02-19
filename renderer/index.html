@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻小组件</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <div class="header">
+      <div class="title">
+        <span class="title-icon">📰</span>
+        <span>新闻</span>
+      </div>
+      <div class="update-time" id="updateTime">加载中...</div>
+    </div>
+
+    <!-- 天气和提醒 -->
+    <div class="info-bar">
+      <div class="weather" id="weather">
+        <span class="loading">加载天气...</span>
+      </div>
+      <div class="reminders" id="reminders">
+        <span class="loading">加载提醒...</span>
+      </div>
+    </div>
+
+    <!-- 新闻列表 -->
+    <div class="news-container" id="newsContainer">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>正在加载新闻...</p>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+      <button class="refresh-btn" id="refreshBtn">刷新</button>
+      <div class="auto-refresh">
+        <span id="countdown">10:00</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+# 📰 NewsWidget
+
+<div align="center">
+
+![Version](https://img.shields.io/badge/version-11.0-blue.svg)
+![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![Node](https://img.shields.io/badge/Node.js-18+-green.svg)
+
+**A beautiful desktop news widget for macOS with 22+ news sources**
+
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Development](#-development) • [Contributing](#-contributing)
+
+</div>
+
+---
+
+## ✨ Features
+
+### 📰 News Aggregation
+- **22 News Sources** from China's top platforms
+- **400+ News Items** updated in real-time
+- **4 Categories**: Hot Topics, Tech, Finance, General
+- **Smart Caching**: 2-minute cache for optimal performance
+
+### 🎨 Beautiful UI
+- **Modern Design**: Glassmorphism effects with macOS style
+- **Theme Support**: Dark, Light, and System themes
+- **Smooth Animations**: Card hover, loading, and transitions
+- **Responsive Layout**: Adjustable window size (320×480 ~ 600×1200)
+
+### ⭐ Core Features
+- **Favorites**: Save and manage your favorite news
+- **Search**: Global search with keyword highlighting (⌘F)
+- **Statistics**: 
+  - News count and source analytics
+  - Word cloud visualization
+  - Category distribution charts
+  - Source activity ranking
+- **Enhanced Info** (v11.0):
+  - 💱 Real-time exchange rates
+  - 💬 Daily quotes
+  - 🎉 Holiday reminders
+  - 📊 Scrolling info bar
+
+### ⚙️ Settings
+- **Auto-start**: One-click setup for launch at login
+- **Refresh Interval**: 5/10/30/60 minutes
+- **Export Favorites**: Save as JSON
+- **Data Management**: Clear all data
+
+### 🚀 Performance
+- **Fast Loading**: 3-4 seconds for 22 sources
+- **Cache Hit**: <0.1 second response
+- **Low Resource**: ~100MB RAM, <1% CPU (idle)
+- **Modular Architecture**: ES6 modules for maintainability
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+### Dark Theme
+![Dark Theme](docs/screenshots/dark-theme.png)
+
+### Light Theme
+![Light Theme](docs/screenshots/light-theme.png)
+
+### Statistics
+![Statistics](docs/screenshots/statistics.png)
+
+### Search
+![Search](docs/screenshots/search.png)
+
+</div>
+
+---
+
+## 📥 Installation
+
+### Download
+
+Download the latest release from [Releases](https://github.com/YOUR_USERNAME/NewsWidget/releases):
+
+```
+NewsWidget-v11.0-macOS.zip (16MB)
+```
+
+### Install
+
+1. **Extract** the zip file
+2. **Drag** `NewsWidget.app` to your Applications folder
+3. **Double-click** to open
+
+### First Run
+
+If you see "Cannot verify developer":
+1. Go to **System Preferences** → **Security & Privacy**
+2. Click **"Open Anyway"**
+
+---
+
+## 🎯 Usage
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `⌘R` | Refresh news |
+| `⌘F` | Search |
+| `⌘W` | Show/Hide window |
+| `⌘Q` | Quit |
+
+### News Sources
+
+**Hot Topics (7)**:
+- Zhihu, Weibo, Baidu, Bilibili, Douyin, Hupu, Tieba
+
+**Tech (8)**:
+- Juejin, V2EX, GitHub, Stack Overflow, Hacker News, Sspai, 36Kr, 52Pojie
+
+**Finance (4)**:
+- Sina Finance, East Money, Xueqiu, Cailian
+
+**General (3)**:
+- Toutiao, Tencent, Douban
+
+### Enhanced Information (v11.0)
+
+The bottom scrolling bar displays:
+- 💱 **Exchange Rates**: Top 3 currency pairs (EUR → CNY, GBP, JPY)
+- 💬 **Daily Quote**: Inspirational quotes
+- 🎉 **Holidays**: Upcoming holidays in the next 7 days
+
+---
+
+## 🛠️ Development
+
+### Prerequisites
+
+- macOS 10.15+
+- Node.js 18+
+- Swift 5.0+
+- Xcode (for compilation)
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/NewsWidget.git
+cd NewsWidget
+
+# Install dependencies
+npm install
+
+# Start the server
+node server.js
+
+# In another terminal, run the Swift app
+swift run
+```
+
+### Project Structure
+
+```
+NewsWidget/
+├── renderer/                 # Frontend (Web)
+│   ├── index-v10.html       # Main HTML (ES6 modules)
+│   ├── app-v10.js           # Main app logic (293 lines)
+│   ├── style-v9.css         # Styles
+│   └── modules/             # ES6 modules
+│       ├── search.js        # Search with debounce
+│       ├── favorites.js     # Favorites management
+│       ├── stats.js         # Statistics
+│       ├── theme.js         # Theme switching
+│       ├── settings.js      # Settings panel
+│       ├── utils.js         # Utility functions
+│       └── enhanced-info.js # Enhanced info (v11)
+├── backend/                 # Backend
+│   └── fetch-news-v2.js    # News fetching (22 sources)
+├── widget-desktop.swift     # Swift desktop app
+├── server.js                # Node.js server
+└── package-v11.sh          # Build script
+```
+
+### Architecture
+
+**Frontend**: HTML + CSS + ES6 Modules  
+**Backend**: Node.js + Express + 22 news sources  
+**Desktop**: Swift + WebKit  
+**Packaging**: pkg (Node.js) + shell script
+
+### Build
+
+```bash
+# Package for distribution
+./package-v11.sh
+
+# Output: NewsWidget-v11.0-macOS.zip (16MB)
+```
+
+---
+
+## 🔧 Configuration
+
+### Add New News Source
+
+Edit `backend/fetch-news-v2.js`:
+
+```javascript
+{
+  id: 'your-source',
+  name: 'Your Source',
+  category: 'tech',
+  url: 'https://api.example.com/news',
+  parser: (data) => {
+    // Parse and return news items
+    return data.map(item => ({
+      title: item.title,
+      url: item.url,
+      score: item.score
+    }));
+  }
+}
+```
+
+### Customize UI
+
+- **Styles**: Edit `renderer/style-v9.css`
+- **Layout**: Edit `renderer/index-v10.html`
+- **Logic**: Edit `renderer/app-v10.js` or modules
+
+---
+
+## 📊 Performance
+
+| Metric | Value |
+|--------|-------|
+| First Load | 3-4 seconds |
+| Cache Hit | <0.1 second |
+| Memory | ~100MB |
+| CPU (idle) | <1% |
+| App Size | 45MB |
+| Distribution | 16MB (zip) |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) first.
+
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Development Guidelines
+
+- Follow the existing code style
+- Write clear commit messages
+- Add tests for new features
+- Update documentation
+
+---
+
+## 📝 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
+
+### Latest (v11.0 - 2026-02-19)
+
+**New Features**:
+- 💱 Real-time exchange rates
+- 💬 Daily inspirational quotes
+- 🎉 Holiday reminders (next 7 days)
+- 📊 Scrolling info bar at bottom
+
+**Improvements**:
+- Enhanced IP query API (Chinese support)
+- University information query
+- Better error handling
+
+---
+
+## 🐛 Known Issues
+
+- Window title shows Chinese text (requires Xcode recompilation)
+- First run may show security warning (normal for unsigned apps)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **News APIs**: Thanks to all the free news API providers
+- **Icons**: SF Symbols by Apple
+- **Inspiration**: macOS native design guidelines
+
+---
+
+## 📮 Contact
+
+- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/NewsWidget/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/NewsWidget/discussions)
+
+---
+
+## ⭐ Star History
+
+If you find this project useful, please consider giving it a star! ⭐
+
+---
+
+<div align="center">
+
+**Made with ❤️ by OpenClaw AI Assistant**
+
+[⬆ Back to Top](#-newswidget)
+
+</div>

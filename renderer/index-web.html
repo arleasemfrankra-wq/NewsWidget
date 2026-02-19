@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>NewsNow - 网页版</title>
+  <link rel="stylesheet" href="style-web.css">
+</head>
+<body>
+  <!-- 顶部标签页 -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="hot">
+      <span class="tab-icon">🔥</span>
+      <span class="tab-text">热点</span>
+    </button>
+    <button class="tab" data-tab="tech">
+      <span class="tab-icon">💻</span>
+      <span class="tab-text">科技</span>
+    </button>
+    <button class="tab" data-tab="finance">
+      <span class="tab-icon">💹</span>
+      <span class="tab-text">财经</span>
+    </button>
+    <button class="tab" data-tab="general">
+      <span class="tab-icon">📰</span>
+      <span class="tab-text">综合</span>
+    </button>
+  </nav>
+
+  <!-- 主内容区 -->
+  <main class="main" id="mainContent">
+    <!-- 加载状态 -->
+    <div class="loading-state" id="loadingState">
+      <div class="spinner"></div>
+      <div class="loading-text">加载中...</div>
+    </div>
+    
+    <!-- 卡片网格容器 -->
+    <div class="content-container" id="contentContainer" style="display: none;">
+      <!-- 动态生成卡片 -->
+    </div>
+  </main>
+  
+  <!-- 底部 -->
+  <footer class="footer">
+    <div class="footer-info">
+      <span>更新时间：</span>
+      <span id="updateTime">--:--</span>
+      <span class="separator">·</span>
+      <span id="countdown">10:00</span>
+    </div>
+    <button class="refresh-btn" id="refreshBtn">
+      <span>↻</span>
+      <span>刷新</span>
+    </button>
+  </footer>
+  
+  <!-- Toast -->
+  <div class="toast" id="toast" style="display: none;"></div>
+  
+  <script src="app-web.js"></script>
+</body>
+</html>
