@@ -260,8 +260,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKUIDe
             NSLog("📂 使用打包的服务器: \(serverPath)")
         } else {
             // 开发环境回退
-            serverPath = "\(NSHomeDirectory())/clawd/skills/morning-briefing-desktop/dist/NewsWidget-Server"
-            workingDir = "\(NSHomeDirectory())/clawd/skills/morning-briefing-desktop"
+            let homeDir = NSHomeDirectory()
+            serverPath = "\(homeDir)/dist/NewsWidget-Server"
+            workingDir = homeDir
             NSLog("📂 使用开发环境服务器: \(serverPath)")
         }
         
