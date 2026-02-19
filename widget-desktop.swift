@@ -248,51 +248,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKUIDe
     func startServer() {
         let task = Process()
         
-        let nodePaths = [
-            "/opt/homebrew/bin/node",
-            "/usr/local/bin/node",
-            "/usr/bin/node"
-        ]
-        
-        var nodeFound = false
-        for path in nodePaths {
-            if FileManager.default.fileExists(atPath: path) {
-                task.launchPath = path
-                nodeFound = true
-                NSLog("✅ 找到 Node.js: \(path)")
-                break
-            }
-        }
-        
-        if !nodeFound {
-            NSLog("❌ 未找到 Node.js")
-            return
-        }
-        
+        // 查找打包的服务器可执行文件
         var serverPath: String
         var workingDir: String
         
-        if let resourcePath = Bundle.main.resourcePath {
-            serverPath = "\(resourcePath)/server.js"
-            workingDir = resourcePath
+        // 优先使用 .app 包内的服务器
+        if let executablePath = Bundle.main.executablePath {
+            let macosDir = (executablePath as NSString).deletingLastPathComponent
+            serverPath = "\(macosDir)/NewsWidget-Server"
+            workingDir = macosDir
+            NSLog("📂 使用打包的服务器: \(serverPath)")
         } else {
-            serverPath = "\(NSHomeDirectory())/clawd/skills/morning-briefing-desktop/server.js"
+            // 开发环境回退
+            serverPath = "\(NSHomeDirectory())/clawd/skills/morning-briefing-desktop/dist/NewsWidget-Server"
             workingDir = "\(NSHomeDirectory())/clawd/skills/morning-briefing-desktop"
+            NSLog("📂 使用开发环境服务器: \(serverPath)")
         }
         
-        task.arguments = [serverPath]
+        // 检查文件是否存在
+        if !FileManager.default.fileExists(atPath: serverPath) {
+            NSLog("❌ 服务器文件不存在: \(serverPath)")
+            return
+        }
+        
+        task.launchPath = serverPath
         task.currentDirectoryPath = workingDir
         
-        // 重定向所有输出到 /dev/null，避免显示终端窗口
-        let devNull = FileHandle.nullDevice
-        task.standardOutput = devNull
-        task.standardError = devNull
-        task.standardInput = devNull
+        // 重定向输出到日志文件
+        let logPath = "/tmp/widget-standalone.log"
+        if let logFile = FileHandle(forWritingAtPath: logPath) ?? {
+            FileManager.default.createFile(atPath: logPath, contents: nil)
+            return FileHandle(forWritingAtPath: logPath)
+        }() {
+            task.standardOutput = logFile
+            task.standardError = logFile
+        }
         
         do {
             try task.run()
             serverProcess = task
-            NSLog("✅ 后端服务已启动")
+            NSLog("✅ 后端服务已启动 (PID: \(task.processIdentifier))")
         } catch {
             NSLog("❌ 启动服务失败: \(error)")
         }

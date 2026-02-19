@@ -6,6 +6,10 @@ const fetchNews = require('./backend/fetch-news-v2');
 const PORT = 3000;
 const CACHE_DURATION = 2 * 60 * 1000; // 2分钟缓存
 
+// 处理 pkg 打包后的路径
+const isPkg = typeof process.pkg !== 'undefined';
+const basePath = isPkg ? path.dirname(process.execPath) : __dirname;
+
 // 缓存对象
 let newsCache = {
   data: null,
@@ -78,7 +82,7 @@ const server = http.createServer(async (req, res) => {
     
     try {
       const { exec } = require('child_process');
-      const scriptPath = path.join(__dirname, action === 'enable' ? 'enable-autostart.sh' : 'disable-autostart.sh');
+      const scriptPath = path.join(basePath, action === 'enable' ? 'enable-autostart.sh' : 'disable-autostart.sh');
       
       exec(`bash "${scriptPath}"`, (error, stdout, stderr) => {
         if (error) {
@@ -123,8 +127,10 @@ const server = http.createServer(async (req, res) => {
       filePath = 'renderer/style-web.css';
     } else if (urlPath.includes('v8')) {
       filePath = 'renderer/style-v8.css';
-    } else {
+    } else if (urlPath.includes('v9')) {
       filePath = 'renderer/style-v9.css';
+    } else {
+      filePath = 'renderer/style.css'; // 默认使用 style.css
     }
   } else if (urlPath.startsWith('/app')) {
     // JS 文件
@@ -137,7 +143,7 @@ const server = http.createServer(async (req, res) => {
     } else if (urlPath.includes('v8')) {
       filePath = 'renderer/app-v8.js';
     } else {
-      filePath = 'renderer/app-v10.js'; // 默认使用 v10
+      filePath = 'renderer/app.js'; // 默认使用 app.js
     }
   } else {
     // 其他文件保持原路径
@@ -153,7 +159,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  filePath = path.join(__dirname, filePath);
+  filePath = path.join(basePath, filePath);
   
   // 如果没有扩展名，默认为 HTML
   let ext = path.extname(filePath);

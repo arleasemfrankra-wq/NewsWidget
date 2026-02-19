@@ -62,14 +62,29 @@
 
 <div align="center">
 
-### Dark Theme
-![Dark Theme](docs/screenshots/dark-theme.png)
+### 主界面 - 微博热搜
+![微博热搜](docs/screenshots/微博热搜.png)
 
-### Light Theme
-![Light Theme](docs/screenshots/light-theme.png)
+### GitHub 热门
+![GitHub](docs/screenshots/github.png)
 
-### News List
-![News List](docs/screenshots/news-list.png)
+### 财经频道
+![财经频道](docs/screenshots/财经频道.png)
+
+### 信息标签页 - 天气预报
+![天气模块](docs/screenshots/天气模块.png)
+
+### 信息标签页 - 汇率转换
+![汇率转换](docs/screenshots/汇率转换.png)
+
+### 信息标签页 - 每日一言与节假日
+![每日一言与节假日](docs/screenshots/每日一言与节假日提醒.png)
+
+### 数据统计
+![数据统计](docs/screenshots/数据统计.png)
+
+### 设置面板
+![设置](docs/screenshots/设置.png)
 
 </div>
 
@@ -82,20 +97,59 @@
 Download the latest release from [Releases](https://github.com/YOUR_USERNAME/NewsWidget/releases):
 
 ```
-NewsWidget-v11.0-macOS.zip (16MB)
+NewsWidget-v11.0-macOS.zip (18MB)
 ```
 
-### Install
+### Install Steps
 
-1. **Extract** the zip file
-2. **Drag** `NewsWidget.app` to your Applications folder
-3. **Double-click** to open
+1. **Extract the zip file**
+   - Double-click `NewsWidget-v11.0-macOS.zip` to extract
+   - You'll get a folder with `NewsWidget.app` inside
 
-### First Run
+2. **Move to Applications** (Optional but recommended)
+   - Drag `NewsWidget.app` to your `/Applications` folder
+   - Or keep it anywhere you like (Desktop, Documents, etc.)
 
-If you see "Cannot verify developer":
-1. Go to **System Preferences** → **Security & Privacy**
-2. Click **"Open Anyway"**
+3. **First Launch - Important!**
+   
+   ⚠️ **macOS will block unsigned apps by default**
+   
+   **Method 1: Right-click to open (Recommended)**
+   - Right-click (or Control+click) on `NewsWidget.app`
+   - Select **"Open"** from the menu
+   - Click **"Open"** in the dialog that appears
+   - The app will launch and remember this choice
+   
+   **Method 2: Remove quarantine attribute (Advanced)**
+   ```bash
+   xattr -cr /path/to/NewsWidget.app
+   ```
+   Then double-click to open normally.
+   
+   **Method 3: System Preferences**
+   - Try to open the app (it will be blocked)
+   - Go to **System Preferences** → **Security & Privacy**
+   - Click **"Open Anyway"** button
+   - Confirm by clicking **"Open"**
+
+4. **Enjoy!**
+   - The app will open automatically in your browser
+   - Visit: http://localhost:3000
+   - A menu bar icon (📰) will appear for quick access
+
+### Troubleshooting
+
+**"NewsWidget is damaged and can't be opened"**
+- This is macOS Gatekeeper blocking unsigned apps
+- Use Method 1 or Method 2 above to bypass
+
+**Port 3000 already in use**
+- Another app is using port 3000
+- Quit that app or change NewsWidget's port in settings
+
+**Browser doesn't open automatically**
+- Manually open: http://localhost:3000
+- Check if the app is running (look for 📰 in menu bar)
 
 ---
 

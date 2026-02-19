@@ -44,15 +44,6 @@
       </span>
       <span class="tab-text">综合</span>
     </button>
-    <button class="tab" data-tab="info">
-      <span class="tab-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M12 16v-4M12 8h.01"/>
-        </svg>
-      </span>
-      <span class="tab-text">信息</span>
-    </button>
     <button class="tab" data-tab="favorites">
       <span class="tab-icon">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -117,75 +108,6 @@
       <!-- 卡片容器 -->
       <div class="card-container" id="cardContainer">
         <!-- 动态生成卡片 -->
-      </div>
-    </div>
-  </div>
-  
-  <!-- 信息面板 (v11.0) -->
-  <div class="info-panel" id="infoPanel" style="display: none;">
-    <div class="info-header">
-      <h2>📊 增强信息</h2>
-      <div class="info-time" id="infoTime"></div>
-    </div>
-    
-    <div class="info-grid">
-      <!-- 天气预报卡片 -->
-      <div class="info-card weather-card">
-        <div class="info-card-header">
-          <span class="info-card-icon">🌤️</span>
-          <h3>天气预报</h3>
-          <div class="weather-location-input">
-            <input type="text" id="weatherLocation" placeholder="输入城市名..." value="Beijing">
-            <button id="refreshWeather" class="icon-btn" title="刷新天气">↻</button>
-          </div>
-        </div>
-        <div class="info-card-content" id="weatherContent">
-          <div class="loading-text">加载中...</div>
-        </div>
-      </div>
-      
-      <!-- 汇率卡片 -->
-      <div class="info-card rates-card">
-        <div class="info-card-header">
-          <span class="info-card-icon">💱</span>
-          <h3>汇率转换</h3>
-        </div>
-        <div class="info-card-content" id="ratesContent">
-          <div class="loading-text">加载中...</div>
-        </div>
-      </div>
-      
-      <!-- 每日一言卡片 -->
-      <div class="info-card quote-card">
-        <div class="info-card-header">
-          <span class="info-card-icon">💬</span>
-          <h3>每日一言</h3>
-          <button id="refreshQuote" class="icon-btn" title="刷新一言">↻</button>
-        </div>
-        <div class="info-card-content" id="quoteContent">
-          <div class="loading-text">加载中...</div>
-        </div>
-      </div>
-      
-      <!-- 节假日卡片 -->
-      <div class="info-card holiday-card">
-        <div class="info-card-header">
-          <span class="info-card-icon">🎉</span>
-          <h3>节假日提醒</h3>
-          <select id="countrySelect" class="country-select">
-            <option value="CN">🇨🇳 中国</option>
-            <option value="ES">🇪🇸 西班牙</option>
-            <option value="US">🇺🇸 美国</option>
-            <option value="GB">🇬🇧 英国</option>
-            <option value="FR">🇫🇷 法国</option>
-            <option value="DE">🇩🇪 德国</option>
-            <option value="JP">🇯🇵 日本</option>
-            <option value="KR">🇰🇷 韩国</option>
-          </select>
-        </div>
-        <div class="info-card-content" id="holidayContent">
-          <div class="loading-text">加载中...</div>
-        </div>
       </div>
     </div>
   </div>

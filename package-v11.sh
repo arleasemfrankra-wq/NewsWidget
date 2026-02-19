@@ -10,9 +10,9 @@ echo ""
 cd "$(dirname "$0")"
 
 # 1. 检查 NewsWidget-Server 是否存在
-if [ ! -f "NewsWidget-Server" ]; then
-    echo "❌ NewsWidget-Server 不存在，需要先打包后端"
-    echo "运行: npx pkg server.js --targets node18-macos-arm64 --output NewsWidget-Server"
+if [ ! -f "dist/NewsWidget-Server" ]; then
+    echo "❌ dist/NewsWidget-Server 不存在，需要先打包后端"
+    echo "运行: npx pkg server.js --target node18-macos-x64 --output dist/NewsWidget-Server"
     exit 1
 fi
 
@@ -46,7 +46,7 @@ mkdir -p "${RESOURCES_DIR}"
 
 # 复制可执行文件
 cp NewsWidget "${MACOS_DIR}/${APP_NAME}"
-cp NewsWidget-Server "${MACOS_DIR}/"
+cp dist/NewsWidget-Server "${MACOS_DIR}/"
 
 # 复制资源文件
 cp -r renderer "${MACOS_DIR}/"
@@ -116,6 +116,11 @@ mkdir -p "${DIST_DIR}"
 
 # 只复制 .app
 cp -r "${APP_DIR}" "${DIST_DIR}/"
+
+# 复制安装说明
+if [ -f "安装说明.txt" ]; then
+    cp "安装说明.txt" "${DIST_DIR}/"
+fi
 
 # 创建 README
 cat > "${DIST_DIR}/README.txt" << 'READMEEOF'

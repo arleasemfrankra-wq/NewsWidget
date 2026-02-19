@@ -1,11 +1,10 @@
-// 主应用模块 - v11.0 增强版本
+// 主应用模块 - v10.0 模块化版本
 import { SearchModule } from '/renderer/modules/search.js';
 import { FavoritesModule } from '/renderer/modules/favorites.js';
 import { StatsModule } from '/renderer/modules/stats.js';
 import { ThemeModule } from '/renderer/modules/theme.js';
 import { SettingsModule } from '/renderer/modules/settings.js';
 import { UtilsModule } from '/renderer/modules/utils.js';
-import EnhancedInfo from '/renderer/modules/enhanced-info.js';
 
 class NewsApp {
   constructor() {
@@ -16,7 +15,6 @@ class NewsApp {
     this.stats = new StatsModule();
     this.theme = new ThemeModule();
     this.settings = new SettingsModule();
-    this.enhancedInfo = EnhancedInfo;
     
     // 全局状态
     this.currentIndex = 0;
@@ -64,7 +62,6 @@ class NewsApp {
     this.theme.init();
     this.settings.init(this);
     this.search.init(this);
-    this.enhancedInfo.init();
   }
 
   // 事件监听
@@ -187,25 +184,18 @@ class NewsApp {
     });
     
     const carouselContainer = document.getElementById('carouselContainer');
-    const infoPanel = document.getElementById('infoPanel');
     const statsPanel = document.getElementById('statsPanel');
     const settingsPanel = document.getElementById('settingsPanel');
     const footer = document.querySelector('.footer');
     const searchBar = document.querySelector('.search-bar');
     
     carouselContainer.style.display = 'none';
-    infoPanel.style.display = 'none';
     statsPanel.style.display = 'none';
     settingsPanel.style.display = 'none';
     footer.style.display = 'none';
     searchBar.style.display = 'none';
     
-    if (tabName === 'info') {
-      infoPanel.style.display = 'block';
-      if (this.newsData) {
-        this.enhancedInfo.update(this.newsData);
-      }
-    } else if (tabName === 'stats') {
+    if (tabName === 'stats') {
       statsPanel.style.display = 'block';
       this.stats.renderStats(this.allSources, this.newsData, this.favorites.getCount());
     } else if (tabName === 'settings') {
