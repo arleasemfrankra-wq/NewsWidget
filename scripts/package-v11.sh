@@ -7,7 +7,8 @@ set -e
 echo "📦 开始打包 v11.0 版本..."
 echo ""
 
-cd "$(dirname "$0")"
+# 切换到项目根目录
+cd "$(dirname "$0")/.."
 
 # 1. 检查 NewsWidget-Server 是否存在
 if [ ! -f "dist/NewsWidget-Server" ]; then
@@ -118,8 +119,8 @@ mkdir -p "${DIST_DIR}"
 cp -r "${APP_DIR}" "${DIST_DIR}/"
 
 # 复制安装说明
-if [ -f "安装说明.txt" ]; then
-    cp "安装说明.txt" "${DIST_DIR}/"
+if [ -f "docs/安装说明.txt" ]; then
+    cp "docs/安装说明.txt" "${DIST_DIR}/"
 fi
 
 # 创建 README
