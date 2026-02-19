@@ -304,7 +304,7 @@ NewsWidget/
 
 ## 🙏 致谢
 
-- **[NewsNow](https://github.com/Guyungy/newsnow)**：灵感来源于这个优秀的新闻聚合项目
+- **[NewsNow](https://github.com/ourongxing/newsnow)**：灵感来源于这个优秀的新闻聚合项目
 - **新闻 API**：感谢所有免费新闻 API 提供商
 - **图标**：Apple 的 SF Symbols
 - **灵感**：macOS 原生设计指南
