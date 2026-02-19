@@ -8,7 +8,9 @@
 ![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![Node](https://img.shields.io/badge/Node.js-18+-green.svg)
 
-**A beautiful desktop news widget for macOS with 22+ news sources**
+**🖥️ 一个精美的 macOS 桌面小组件，聚合 22+ 新闻源**
+
+**可自由拖动、调整大小，装饰桌面的同时保持高实用性**
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Development](#-development) • [Contributing](#-contributing)
 
@@ -17,6 +19,14 @@
 ---
 
 ## ✨ Features
+
+### 🖥️ 桌面小组件特性
+- **自由拖动**: 可在桌面任意位置放置
+- **灵活调整**: 支持自由缩放（320×480 ~ 600×1200）
+- **置顶显示**: 可选择置于所有窗口之上
+- **桌面装饰**: 毛玻璃效果，与 macOS 完美融合
+- **实用性强**: 实时新闻、天气、汇率等信息一目了然
+- **菜单栏控制**: 📰 图标快速显示/隐藏
 
 ### 📰 News Aggregation
 - **22 News Sources** from China's top platforms
@@ -28,7 +38,7 @@
 - **Modern Design**: Glassmorphism effects with macOS style
 - **Theme Support**: Dark, Light, and System themes
 - **Smooth Animations**: Card hover, loading, and transitions
-- **Responsive Layout**: Adjustable window size (320×480 ~ 600×1200)
+- **Responsive Layout**: Adjustable window size
 
 ### ⭐ Core Features
 - **Favorites**: Save and manage your favorite news
@@ -39,10 +49,10 @@
   - Category distribution charts
   - Source activity ranking
 - **Enhanced Info** (v11.0):
-  - 💱 Real-time exchange rates
-  - 💬 Daily quotes
-  - 🎉 Holiday reminders
-  - 📊 Scrolling info bar
+  - 🌤️ Weather forecast (customizable city, 3-day forecast)
+  - 💱 Currency converter (5 currencies)
+  - 💬 Daily quotes (Chinese)
+  - 🎉 Holiday reminders (8 countries)
 
 ### ⚙️ Settings
 - **Auto-start**: One-click setup for launch at login
@@ -155,6 +165,26 @@ NewsWidget-v11.0-macOS.zip (18MB)
 
 ## 🎯 Usage
 
+### 🖥️ 桌面小组件操作
+
+**窗口控制**
+- **拖动**: 点击标题栏拖动到任意位置
+- **调整大小**: 拖动窗口边缘或角落调整大小
+- **显示/隐藏**: 点击菜单栏 📰 图标，或按 `⌘W`
+- **置于顶层**: 菜单栏 → 置于顶层
+- **重置位置**: 菜单栏 → 重置位置（恢复到右上角）
+
+**窗口大小预设**
+- 小 (320×480) - 紧凑模式
+- 中 (420×800) - 默认大小
+- 大 (520×1000) - 宽屏模式
+
+**使用场景**
+- 📍 放在桌面角落，随时查看新闻
+- 📍 放在副屏，工作时浏览资讯
+- 📍 调整透明度，作为桌面装饰
+- 📍 置顶显示，不被其他窗口遮挡
+
 ### Keyboard Shortcuts
 
 | Shortcut | Action |
@@ -180,10 +210,11 @@ NewsWidget-v11.0-macOS.zip (18MB)
 
 ### Enhanced Information (v11.0)
 
-The bottom scrolling bar displays:
-- 💱 **Exchange Rates**: Top 3 currency pairs (EUR → CNY, GBP, JPY)
-- 💬 **Daily Quote**: Inspirational quotes
-- 🎉 **Holidays**: Upcoming holidays in the next 7 days
+**Info Tab** includes 4 cards:
+- 🌤️ **Weather Forecast**: Customizable city, 3-day forecast
+- 💱 **Currency Converter**: 5 currencies (EUR, CNY, USD, GBP, JPY)
+- 💬 **Daily Quote**: Chinese quotes with refresh button
+- 🎉 **Holiday Reminders**: 8 countries, ±30 days range
 
 ---
 
