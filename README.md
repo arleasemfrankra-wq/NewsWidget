@@ -68,11 +68,8 @@
 ### Light Theme
 ![Light Theme](docs/screenshots/light-theme.png)
 
-### Statistics
-![Statistics](docs/screenshots/statistics.png)
-
-### Search
-![Search](docs/screenshots/search.png)
+### News List
+![News List](docs/screenshots/news-list.png)
 
 </div>
 

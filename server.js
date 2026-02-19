@@ -109,14 +109,11 @@ const server = http.createServer(async (req, res) => {
   
   // 路由映射
   if (urlPath === '/' || urlPath === '/index.html') {
-    // 默认使用 v10 模块化版本
-    filePath = 'renderer/index-v10.html';
-  } else if (urlPath === '/v9' || urlPath === '/v9.html') {
-    // v9 版本（单文件版本）
-    filePath = 'renderer/index-v9.html';
-  } else if (urlPath === '/v8' || urlPath === '/v8.html') {
-    // v8 版本（轮播卡片）
-    filePath = 'renderer/index-v8.html';
+    // 默认使用最新版本
+    filePath = 'renderer/index.html';
+  } else if (urlPath.startsWith('/renderer/')) {
+    // 直接访问 renderer 目录下的文件
+    filePath = urlPath.substring(1);
   } else if (urlPath === '/web' || urlPath === '/web.html') {
     // 网页版（三列网格）
     filePath = 'renderer/index-web.html';

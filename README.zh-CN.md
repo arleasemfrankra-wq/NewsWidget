@@ -70,11 +70,8 @@
 ### 亮色主题
 ![亮色主题](docs/screenshots/light-theme.png)
 
-### 数据统计
-![数据统计](docs/screenshots/statistics.png)
-
-### 搜索功能
-![搜索功能](docs/screenshots/search.png)
+### 新闻列表
+![新闻列表](docs/screenshots/news-list.png)
 
 </div>
 
